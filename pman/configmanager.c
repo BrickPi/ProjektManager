@@ -8,11 +8,11 @@
 #include "configmanager.h"
 
 void parseconfig(char* confstr) {
-    char* args[] = {strtok(confstr, " ")};
-    int size = sizeof args / sizeof args[0];
-    
-    for (int i = 0; i < size; i++) {
-        printf("%s\n", args[i]);
+    char* token = strtok(confstr, " ");
+    while (token != NULL)
+    {
+        printf("%s\n", token);
+        token = strtok(NULL, " ");
     }
     
     struct Configuration c;
