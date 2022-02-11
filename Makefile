@@ -1,9 +1,9 @@
 CC=gcc
 CFLAGS=-Ipman -Wall -Wextra
 
-DEPS = pman/configmanager.h
+DEPS = pman/configmanager.h pman/iniparser.h pman/dictionary.h
 
-OBJ = pman/main.o pman/configmanager.o 
+OBJ = pman/main.o pman/configmanager.o pman/libiniparser.a
 
 
 pman/%.o: %.c $(DEPS)

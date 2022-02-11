@@ -13,21 +13,30 @@
 #include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
+#include "iniparser.h"
 #ifdef WIN32
 #include <windows.h>
-#define DATA_PATH "%USERPROFILE%/.projektmanager/"
-#define CONF_PATH "%USERPROFILE%/.projektmanager/pm.conf"
-#else
-#define DATA_PATH ".projektmanager/"
-#define CONF_PATH ".projektmanager/pm.conf"
 #endif
+#define CONF_PATH ".projektmanager/pm.ini"
 
-// Parse the Config from a string
-struct Configuration {
+//Configuration Data
+typedef struct {
     char* user; //user who owns configuration
     int appBuild; //version of the application
-};
+} Configuration;
 
-void parseconfig(char* confstr);
+static Configuration CONFIG;
+
+int parseconfig();
+
+int getBoolKey(char* key);
+int getIntKey(char* key);
+char* getStringKey(char* key);
+
+int getKeyType(char* key);
+
+int setBoolKey(char* key, int value);
+int setIntKey(char* key, int value);
+int setStringKey(char* key, char* value);
 
 #endif /* configmanager_h */
